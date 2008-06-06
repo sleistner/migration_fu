@@ -10,7 +10,7 @@ module ActiveRecord
 
       def add_foreign_key_constraint from_table, to_table, options = {}
         process(from_table, to_table, options) do |ft, tt, id|
-          exec "ALTER TABLE #{ft} ADD CONSTRAINT #{id} FOREIGN KEY(#{tt.singularize}_id) REFERENCES #{tt}(id)" << prepare_conditions(options)
+          execute "ALTER TABLE #{ft} ADD CONSTRAINT #{id} FOREIGN KEY(#{tt.singularize}_id) REFERENCES #{tt}(id)" << conditions(options)
         end 
       end
       
@@ -18,7 +18,7 @@ module ActiveRecord
       
       def remove_foreign_key_constraint from_table, to_table, options = {}
         process(from_table, to_table, options) do |ft, tt, id|
-          exec "ALTER TABLE #{ft} DROP FOREIGN KEY #{id}"
+          execute "ALTER TABLE #{ft} DROP FOREIGN KEY #{id}"
         end
       end
 
@@ -26,12 +26,12 @@ module ActiveRecord
 
       private
 
-      def prepare_conditions options
-        conditions = []
+      def conditions options
+        conditions = String.new
         options.each_pair do |key, value|
-          conditions << "#{key.to_s.gsub(/_/, ' ')} #{value.to_s.gsub(/_/, ' ')}" if valid_condition?(key, value)
+          conditions << " #{key.to_s.gsub(/_/, ' ')} #{value.to_s.gsub(/_/, ' ')}".upcase if valid_condition?(key, value)
         end
-        conditions.join(' ')
+        conditions
       end
 
       def valid_condition? key, value
@@ -47,11 +47,7 @@ module ActiveRecord
         end
         yield from_table.to_s, to_table.to_s, id
       end
-
-      def exec cmd
-        execute cmd.gsub(/\t|\n|\r/, ' ').squeeze(' ').strip
-      end
-
+      
     end
   end
 end
