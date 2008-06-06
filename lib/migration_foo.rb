@@ -29,12 +29,12 @@ module ActiveRecord
       def conditions options
         conditions = String.new
         options.each_pair do |key, value|
-          conditions << " #{key.to_s.gsub(/_/, ' ')} #{value.to_s.gsub(/_/, ' ')}".upcase if valid_condition?(key, value)
+          conditions << " #{key.to_s.gsub(/_/, ' ')} #{value.to_s.gsub(/_/, ' ')}".upcase if condition_valid?(key, value)
         end
         conditions
       end
 
-      def valid_condition? key, value
+      def condition_valid? key, value
         OPTION_VALUES.include?(key.to_sym) && OPTION_KEYS.include?(value.to_sym)
       end
 
