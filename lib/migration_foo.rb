@@ -8,21 +8,17 @@ module ActiveRecord
 
     class << self
 
-      def add_foreign_key_constraint from_table, to_table, options = {}
+      def add_foreign_key from_table, to_table, options = {}
         process(from_table, to_table, options) do |ft, tt, id|
           execute "ALTER TABLE #{ft} ADD CONSTRAINT #{id} FOREIGN KEY(#{tt.singularize}_id) REFERENCES #{tt}(id)" << conditions(options)
         end 
       end
       
-      alias_method :add_foreign_key, :add_foreign_key_constraint
-      
-      def remove_foreign_key_constraint from_table, to_table, options = {}
+      def remove_foreign_key from_table, to_table, options = {}
         process(from_table, to_table, options) do |ft, tt, id|
           execute "ALTER TABLE #{ft} DROP FOREIGN KEY #{id}"
         end
       end
-
-      alias_method :remove_foreign_key, :remove_foreign_key_constraint
 
       private
 
