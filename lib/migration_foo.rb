@@ -17,6 +17,7 @@ module ActiveRecord
       def remove_foreign_key from_table, to_table, options = {}
         process(from_table, to_table, options) do |ft, tt, id|
           execute "ALTER TABLE #{ft} DROP FOREIGN KEY #{id}"
+          execute "ALTER TABLE #{ft} DROP INDEX KEY #{id}"
         end
       end
 
