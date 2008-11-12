@@ -1,11 +1,18 @@
-MigrationFoo
-===============
+= MigrationFu
 
-install:
+Rails gem / plugin for generating foreign key constraints.
 
- script/plugin install http://svn.enterat.de/migration_foo/trunk
+== Install
+  
+=== as gem
+  
+  sudo gem install sleistner-migration_fu --source http://gems.github.com
+  
+=== or plugin
+  
+  script/plugin install git://github.com/sleistner/migration_fu.git
 
-examples:
+== Usage
 
   -----------------       -----------------
   |    users      |       |   addresses   |

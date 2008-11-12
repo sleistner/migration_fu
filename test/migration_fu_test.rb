@@ -1,5 +1,5 @@
 require 'test/unit'
-require File.dirname(__FILE__) + '/../lib/migration_foo'
+require File.dirname(__FILE__) + '/../lib/migration_fu'
 
 class String
   def singularize; self[0...-1] end
@@ -9,7 +9,7 @@ class ActiveRecord::Migration
   def self.execute command; command end
 end
 
-class MigrationFooTest < Test::Unit::TestCase
+class MigrationFuTest < Test::Unit::TestCase
   
   ID        = 'fk_users_files'
   CUSTOM_ID = 'fk_my_name'
@@ -28,7 +28,7 @@ class MigrationFooTest < Test::Unit::TestCase
 
   def test_should_add_foreign_key_with_valid_options
     assert_equal "#{add_command} ON DELETE CASCADE", add(:on_delete => :cascade)
-    assert_equal "#{add_command} ON DELETE CASCADE ON UPDATE SET NULL", add(:on_delete => :cascade, :on_update => :set_null)
+    assert_equal "#{add_command} ON UPDATE SET NULL ON DELETE CASCADE", add(:on_update => :set_null, :on_delete => :cascade)
   end
   
   def test_should_add_foreign_key_with_optional_name
@@ -50,19 +50,19 @@ class MigrationFooTest < Test::Unit::TestCase
   
   private
   
-  def add options = {}
+  def add(options = {})
     @foo.add_foreign_key :users, :files, options
   end
 
-  def remove options = {}
+  def remove(options = {})
     @foo.remove_foreign_key :users, :files, options
   end
   
-  def add_command id = ID, to = 'files'
+  def add_command(id = ID, to = 'files')
     "ALTER TABLE users ADD CONSTRAINT #{id} FOREIGN KEY(#{to.singularize}_id) REFERENCES #{to}(id)"
   end
   
-  def remove_command id = ID
+  def remove_command(id = ID)
     "ALTER TABLE users DROP FOREIGN KEY #{id}"
   end
   

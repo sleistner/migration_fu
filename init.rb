@@ -1,1 +1,1 @@
-require 'migration_foo'
+require 'migration_fu'
