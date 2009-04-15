@@ -27,20 +27,10 @@ Rails gem / plugin for generating foreign key constraints.
 
   see http://dev.mysql.com/doc/refman/5.0/en/innodb-foreign-key-constraints.html
     
-  arguments:  from_table,  to_table,  options => { :name, on_delete, on_update }
+  arguments:  from_table,  to_table,  options => { :name, :on_delete, :on_update }
 
   add_foreign_key(:addresses, :users, :name => 'fk_add_user')
-               
   add_foreign_key(:addresses, :users, :on_delete => :cascade)
-  add_foreign_key(:addresses, :users, :on_delete => :set_null)
-  add_foreign_key(:addresses, :users, :on_delete => :restrict)
-  add_foreign_key(:addresses, :users, :on_delete => :no_action)
-               
-  add_foreign_key(:addresses, :users, :on_update => :cascade)
-  add_foreign_key(:addresses, :users, :on_update => :set_null)
-  add_foreign_key(:addresses, :users, :on_update => :restrict)
-  add_foreign_key(:addresses, :users, :on_update => :no_action)
-    
   add_foreign_key(:addresses, :users,  :on_delete => :cascade, :on_update => :cascade)
     
   class CreateUsers < ActiveRecord::Migration

@@ -5,7 +5,7 @@ Gem::Specification.new do |s|
   s.required_rubygems_version = Gem::Requirement.new(">= 1.2") if s.respond_to? :required_rubygems_version=
   s.authors = ["Steffen Leistner"]
   s.date = %q{2008-11-12}
-  s.description = %q{Add or remove foreign keys}
+  s.description = %q{Rails gem / plugin which generates mysql foreign key constraints.}
   s.email = %q{sleistner@gmail.com}
   s.extra_rdoc_files = ["lib/migration_fu.rb", "README.rdoc"]
   s.files = ["init.rb", "install.rb", "lib/migration_fu.rb", "Rakefile", "README.rdoc", "test/migration_fu_test.rb", "Manifest", "migration_fu.gemspec"]

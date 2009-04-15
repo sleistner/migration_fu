@@ -2,9 +2,9 @@ module ActiveRecord
 
   class Migration
 
-    MAX_KEY_LENGTH = 64
-    OPTION_KEYS = [:restrict, :set_null, :cascade, :no_action]
-    OPTION_VALUES = [:on_update, :on_delete]
+    MAX_KEY_LENGTH  =   64
+    OPTION_KEYS     =   [:restrict, :set_null, :cascade, :no_action]
+    OPTION_VALUES   =   [:on_update, :on_delete]
 
     class << self
 
@@ -24,7 +24,7 @@ module ActiveRecord
         ActiveRecord::Base.send(:subclasses).each(&:reset_column_information)
       end
 
-      private
+    private
 
       def conditions(options)
         conditions = ''
@@ -43,7 +43,7 @@ module ActiveRecord
 
         if id.size > MAX_KEY_LENGTH
           id = id.slice(0...MAX_KEY_LENGTH)
-          puts "Warning: foreign key id has more then #{MAX_KEY_LENGTH} characters - sliced to '#{id}'"
+          puts "*** foreign key id has more than #{MAX_KEY_LENGTH} characters - sliced to '#{id}'"
         end
         yield(from_table.to_s, to_table.to_s, id)
       end

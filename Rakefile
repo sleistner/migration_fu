@@ -34,7 +34,7 @@ namespace :test do
 end
 
 Echoe.new('migration_fu', '0.0.1') do |p|
-  p.description     = 'Add or remove foreign keys'
+  p.description     = 'Rails gem / plugin which generates mysql foreign key constraints.'
   p.url             = 'http://github.com/sleistner/migration_fu'
   p.author          = 'Steffen Leistner'
   p.email           = 'sleistner@gmail.com'

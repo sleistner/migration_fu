@@ -28,7 +28,7 @@ class MigrationFuTest < Test::Unit::TestCase
 
   def test_should_add_foreign_key_with_valid_options
     assert_equal "#{add_command} ON DELETE CASCADE", add(:on_delete => :cascade)
-    assert_equal "#{add_command} ON UPDATE SET NULL ON DELETE CASCADE", add(:on_update => :set_null, :on_delete => :cascade)
+    assert_equal "#{add_command} ON DELETE CASCADE ON UPDATE SET NULL", add(:on_update => :set_null, :on_delete => :cascade)
   end
   
   def test_should_add_foreign_key_with_optional_name
