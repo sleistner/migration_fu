@@ -15,7 +15,7 @@ Gem::Specification.new do |s|
   s.require_paths = ["lib"]
   s.rubyforge_project = %q{migration_fu}
   s.rubygems_version = %q{1.2.0}
-  s.summary = %q{Add or remove foreign keys}
+  s.summary = %q{Add or remove foreign keys from migrations.}
   s.test_files = ["test/migration_fu_test.rb"]
 
   if s.respond_to? :specification_version then
