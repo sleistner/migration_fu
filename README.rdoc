@@ -1,6 +1,6 @@
 = MigrationFu
 
-Rails gem / plugin which generates mysql foreign key constraints.
+Rails gem / plugin for generating mysql foreign key constraints.
 
 == Install
   

@@ -33,8 +33,8 @@ namespace :test do
   end
 end
 
-Echoe.new('migration_fu', '0.0.1') do |p|
-  p.description     = 'Rails gem / plugin which generates mysql foreign key constraints.'
+Echoe.new('migration_fu', '0.0.2') do |p|
+  p.description     = 'Rails gem / plugin for generating mysql foreign key constraints.'
   p.url             = 'http://github.com/sleistner/migration_fu'
   p.author          = 'Steffen Leistner'
   p.email           = 'sleistner@gmail.com'
